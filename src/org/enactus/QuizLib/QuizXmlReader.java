@@ -97,13 +97,12 @@ public class QuizXmlReader {
 	
 	/**
 	 * This static method will return an ArrayList of Catalog items that contain the names and difficulties of
-	 * the quix files in the directory.
+	 * the quiz files in the directory.
 	 * 
-	 * @param directory the directory to look for quizes in
-	 * @return the list of quizes
+	 * @param directory the directory to look for quizzes in
+	 * @return the list of quizzes
 	 */
 	public static ArrayList<QuizCatalogItem> getQuizCatalog(String directory) throws Exception {
-		// TODO Test the Catalog building code
 		ArrayList<QuizCatalogItem> catalog = new ArrayList<QuizCatalogItem>();
 		
 		File folder = new File(directory);
