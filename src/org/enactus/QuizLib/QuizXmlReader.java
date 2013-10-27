@@ -94,4 +94,31 @@ public class QuizXmlReader {
 		
 		return q;
 	}
+	
+	/**
+	 * This static method will return an ArrayList of Catalog items that contain the names and difficulties of
+	 * the quix files in the directory.
+	 * 
+	 * @param directory the directory to look for quizes in
+	 * @return the list of quizes
+	 */
+	public static ArrayList<QuizCatalogItem> getQuizCatalog(String directory) throws Exception {
+		// TODO Test the Catalog building code
+		ArrayList<QuizCatalogItem> catalog = new ArrayList<QuizCatalogItem>();
+		
+		File folder = new File(directory);
+		File[] files = folder.listFiles();
+		
+		for(int i = 0; i < files.length; i++) {
+			String name = files[i].getName();
+			if(name.toLowerCase().endsWith(".xml")) {
+				QuizXmlReader reader = new QuizXmlReader(new File(directory + "/" + name));
+				Quiz q = reader.getQuiz();
+				
+				catalog.add(new QuizCatalogItem(q.getName(), q.getDifficulty()));
+			}
+		}
+		
+		return catalog;
+	}
 }
